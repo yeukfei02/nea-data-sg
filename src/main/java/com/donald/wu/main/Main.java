@@ -27,6 +27,7 @@ public class Main {
 	private final static String fourDayOutlook = "http://api.nea.gov.sg/api/WebAPI/?dataset=4days_outlook&keyref=" + authorizationKey;
 	private final static String ultravioletIndex = "http://api.nea.gov.sg/api/WebAPI/?dataset=uvi&keyref=" + authorizationKey;
 	private final static String earthquakeAdvisory = "http://api.nea.gov.sg/api/WebAPI/?dataset=earthquake&keyref=" + authorizationKey;
+	
 	private final static String twoHourNowcastStr = "2-hour Nowcast";
 	private final static String twentyFourHourForecastStr = "24-hour Forecast";
 	private final static String fourDayOutlookStr = "4-day Outlook";
