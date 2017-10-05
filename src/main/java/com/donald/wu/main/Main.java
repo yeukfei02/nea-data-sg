@@ -59,33 +59,26 @@ public class Main {
 					switch(input) {
 						case 1:
 							showDescriptionStr(input);
-							
 							showXmlStr(twoHourNowcast, input);
 							
 							break;
 						case 2:
 							showDescriptionStr(input);
-							
 							showXmlStr(twentyFourHourForecast, input);
-							
 							
 							break;
 						case 3:
 							showDescriptionStr(input);
-							
 							showXmlStr(fourDayOutlook, input);
-							
 							
 							break;
 						case 4:
 							showDescriptionStr(input);
-							
 							showXmlStr(ultravioletIndex, input);
 							
 							break;
 						case 5:
 							showDescriptionStr(input);
-							
 							showXmlStr(earthquakeAdvisory, input);
 							
 							break;
