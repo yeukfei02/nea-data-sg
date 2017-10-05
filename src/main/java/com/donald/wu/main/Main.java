@@ -19,21 +19,8 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class Main {
-	private final static String authorizationKey = "781CF461BB6606ADC49D8386041BBFD227CBEBC4F82A9D96";
-
-	private final static String twoHourNowcast = "http://api.nea.gov.sg/api/WebAPI/?dataset=2hr_nowcast&keyref=" + authorizationKey;
-	private final static String twentyFourHourForecast = "http://api.nea.gov.sg/api/WebAPI/?dataset=24hrs_forecast&keyref=" + authorizationKey;
-	private final static String fourDayOutlook = "http://api.nea.gov.sg/api/WebAPI/?dataset=4days_outlook&keyref=" + authorizationKey;
-	private final static String ultravioletIndex = "http://api.nea.gov.sg/api/WebAPI/?dataset=uvi&keyref=" + authorizationKey;
-	private final static String earthquakeAdvisory = "http://api.nea.gov.sg/api/WebAPI/?dataset=earthquake&keyref=" + authorizationKey;
+public class Main extends AbstractMain {
 	
-	private final static String twoHourNowcastStr = "2-hour Nowcast";
-	private final static String twentyFourHourForecastStr = "24-hour Forecast";
-	private final static String fourDayOutlookStr = "4-day Outlook";
-	private final static String ultravioletIndexStr = "Ultraviolet Index (UVI)";
-	private final static String earthquakeAdvisoryStr = "Earthquake Advisory";
-
 	public static void main(String[] args) {
 		boolean exitStatus = false;
 
@@ -150,7 +137,7 @@ public class Main {
 	
 	private static void showDescriptionStr(int input) {
 		String inputResultStr = getInputResultStr(input);
-		System.out.println("Opening " + inputResultStr + " now...");
+		System.out.println("Opening [" + inputResultStr + "] now...");
 		System.out.println("");
 	}
 
