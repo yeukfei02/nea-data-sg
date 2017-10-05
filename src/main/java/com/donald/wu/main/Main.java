@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -22,21 +24,14 @@ public class Main {
 
 	private final static String twoHourNowcast = "http://api.nea.gov.sg/api/WebAPI/?dataset=2hr_nowcast&keyref=" + authorizationKey;
 	private final static String twentyFourHourForecast = "http://api.nea.gov.sg/api/WebAPI/?dataset=24hrs_forecast&keyref=" + authorizationKey;
-	private final static String fourDayOutlook = "http://api.nea.gov.sg/api/WebAPI/?dataset=2hr_nowcast&keyref=" + authorizationKey;
-	private final static String heavyRainWarning = "http://api.nea.gov.sg/api/WebAPI/?dataset=2hr_nowcast&keyref=" + authorizationKey;
-	private final static String ultravioletIndex = "http://api.nea.gov.sg/api/WebAPI/?dataset=2hr_nowcast&keyref=" + authorizationKey;
-	private final static String earthquakeAdvisory = "http://api.nea.gov.sg/api/WebAPI/?dataset=2hr_nowcast&keyref=" + authorizationKey;
-	private final static String psiUpdate = "http://api.nea.gov.sg/api/WebAPI/?dataset=2hr_nowcast&keyref=" + authorizationKey;
-	private final static String pm25Update = "http://api.nea.gov.sg/api/WebAPI/?dataset=2hr_nowcast&keyref=" + authorizationKey;
-
+	private final static String fourDayOutlook = "http://api.nea.gov.sg/api/WebAPI/?dataset=4days_outlook&keyref=" + authorizationKey;
+	private final static String ultravioletIndex = "http://api.nea.gov.sg/api/WebAPI/?dataset=uvi&keyref=" + authorizationKey;
+	private final static String earthquakeAdvisory = "http://api.nea.gov.sg/api/WebAPI/?dataset=earthquake&keyref=" + authorizationKey;
 	private final static String twoHourNowcastStr = "2-hour Nowcast";
 	private final static String twentyFourHourForecastStr = "24-hour Forecast";
 	private final static String fourDayOutlookStr = "4-day Outlook";
-	private final static String heavyRainWarningStr = "Heavy Rain Warning";
 	private final static String ultravioletIndexStr = "Ultraviolet Index (UVI)";
 	private final static String earthquakeAdvisoryStr = "Earthquake Advisory";
-	private final static String psiUpdateStr = "PSI Update";
-	private final static String pm25UpdateStr = "PM 2.5 Update";
 
 	public static void main(String[] args) {
 		boolean exitStatus = false;
@@ -49,11 +44,8 @@ public class Main {
 			System.out.println("1. " + twoHourNowcastStr);
 			System.out.println("2. " + twentyFourHourForecastStr);
 			System.out.println("3. " + fourDayOutlookStr);
-			System.out.println("4. " + heavyRainWarningStr);
-			System.out.println("5. " + ultravioletIndexStr);
-			System.out.println("6. " + earthquakeAdvisoryStr);
-			System.out.println("7. " + psiUpdateStr);
-			System.out.println("8. " + pm25UpdateStr);
+			System.out.println("4. " + ultravioletIndexStr);
+			System.out.println("5. " + earthquakeAdvisoryStr);
 			System.out.println("");
 			System.out.println("0. Exit");
 			System.out.println("-------------------------------");
@@ -62,95 +54,39 @@ public class Main {
 				int input = scanner.nextInt();
 				System.out.println("You select = " + input);
 
-				if (input >= 1 && input <= 8) {
+				if (input >= 1 && input <= 5) {
 					switch(input) {
 						case 1:
 							showDescriptionStr(input);
 							
 							showXmlStr(twoHourNowcast, input);
 							
-							exitStatus = getUserExitStatus(scanner);
-							if (exitStatus) {
-								System.out.println("Exit...");
-								System.out.println("");
-							}
 							break;
 						case 2:
 							showDescriptionStr(input);
 							
 							showXmlStr(twentyFourHourForecast, input);
 							
-							exitStatus = getUserExitStatus(scanner);
-							if (exitStatus) {
-								System.out.println("Exit...");
-								System.out.println("");
-							}
+							
 							break;
 						case 3:
 							showDescriptionStr(input);
 							
 							showXmlStr(fourDayOutlook, input);
 							
-							exitStatus = getUserExitStatus(scanner);
-							if (exitStatus) {
-								System.out.println("Exit...");
-								System.out.println("");
-							}
+							
 							break;
 						case 4:
 							showDescriptionStr(input);
 							
-							showXmlStr(heavyRainWarning, input);
+							showXmlStr(ultravioletIndex, input);
 							
-							exitStatus = getUserExitStatus(scanner);
-							if (exitStatus) {
-								System.out.println("Exit...");
-								System.out.println("");
-							}
 							break;
 						case 5:
 							showDescriptionStr(input);
 							
-							showXmlStr(ultravioletIndex, input);
-							
-							exitStatus = getUserExitStatus(scanner);
-							if (exitStatus) {
-								System.out.println("Exit...");
-								System.out.println("");
-							}
-							break;
-						case 6:
-							showDescriptionStr(input);
-							
 							showXmlStr(earthquakeAdvisory, input);
 							
-							exitStatus = getUserExitStatus(scanner);
-							if (exitStatus) {
-								System.out.println("Exit...");
-								System.out.println("");
-							}
-							break;
-						case 7:
-							showDescriptionStr(input);
-							
-							showXmlStr(psiUpdate, input);
-							
-							exitStatus = getUserExitStatus(scanner);
-							if (exitStatus) {
-								System.out.println("Exit...");
-								System.out.println("");
-							}
-							break;
-						case 8:
-							showDescriptionStr(input);
-							
-							showXmlStr(pm25Update, input);
-							
-							exitStatus = getUserExitStatus(scanner);
-							if (exitStatus) {
-								System.out.println("Exit...");
-								System.out.println("");
-							}
 							break;
 					}
 
@@ -185,19 +121,10 @@ public class Main {
 				inputResultStr = fourDayOutlookStr;
 				break;
 			case 4:
-				inputResultStr = heavyRainWarningStr;
-				break;
-			case 5:
 				inputResultStr = ultravioletIndexStr;
 				break;
-			case 6:
+			case 5:
 				inputResultStr = earthquakeAdvisoryStr;
-				break;
-			case 7:
-				inputResultStr = psiUpdateStr;
-				break;
-			case 8:
-				inputResultStr = pm25UpdateStr;
 				break;
 		}
 
@@ -239,35 +166,13 @@ public class Main {
 		
 		getXmlValue(urlLink, input);
 	}
-	
-	private static boolean getUserExitStatus(Scanner scanner) {
-		boolean exitStatus = false;
-		
-		System.out.println("Continue? [y/n]");
-		try {
-			String inputStr = scanner.next();
-			if (inputStr.equalsIgnoreCase("y")) {
-				exitStatus = false;
-			} else if (inputStr.equalsIgnoreCase("n")) {
-				exitStatus = true;
-			} else {
-				System.out.println("Please enter y/n only...");
-				System.out.println("");
-			}
-		} catch (Exception e) {
-			System.out.println("Please enter y/n only...");
-			System.out.println("");
-		}
-		
-		return exitStatus;
-	}
 
 	private static void getXmlValue(String urlLink, int input) {
 		try {
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document doc = db.parse(urlLink);
-			System.out.println("root node name = " + doc.getDocumentElement().getNodeName());
+			//System.out.println("root node name = " + doc.getDocumentElement().getNodeName());
 			System.out.println("");
 			
 			XPathFactory xPathfactory = XPathFactory.newInstance();
@@ -275,7 +180,7 @@ public class Main {
 			if (input == 1) {
 				String titleValue = (String) xpath.compile("//channel/title").evaluate(doc, XPathConstants.STRING);
 				String dateValue = (String) xpath.compile("//channel/item/forecastIssue/@date").evaluate(doc, XPathConstants.STRING);
-				String timeValue = (String) xpath.compile("//channel/item//forecastIssue/@time").evaluate(doc, XPathConstants.STRING);
+				String timeValue = (String) xpath.compile("//channel/item/forecastIssue/@time").evaluate(doc, XPathConstants.STRING);
 				String validTimeValue = (String) xpath.compile("//channel/item/validTime").evaluate(doc, XPathConstants.STRING);
 				
 				System.out.println(titleValue);
@@ -302,7 +207,7 @@ public class Main {
 			else if (input == 2) {
 				String titleValue = (String) xpath.compile("//channel/main/title").evaluate(doc, XPathConstants.STRING);
 				String dateValue = (String) xpath.compile("//channel/main/forecastIssue/@date").evaluate(doc, XPathConstants.STRING);
-				String timeValue = (String) xpath.compile("//channel/main//forecastIssue/@time").evaluate(doc, XPathConstants.STRING);
+				String timeValue = (String) xpath.compile("//channel/main/forecastIssue/@time").evaluate(doc, XPathConstants.STRING);
 				String validTimeValue = (String) xpath.compile("//channel/main/validTime").evaluate(doc, XPathConstants.STRING);
 				
 				System.out.println(titleValue);
@@ -331,23 +236,94 @@ public class Main {
 				System.out.println("");
 			}
 			else if (input == 3) {
+				String titleValue = (String) xpath.compile("//channel/item/title").evaluate(doc, XPathConstants.STRING);
+				String dateValue = (String) xpath.compile("//channel/item/forecastIssue/@date").evaluate(doc, XPathConstants.STRING);
+				String timeValue = (String) xpath.compile("//channel/item/forecastIssue/@time").evaluate(doc, XPathConstants.STRING);
 				
+				System.out.println(titleValue);
+				System.out.println("----------------------------------------------------------");
+				System.out.println("date = " + dateValue);
+				System.out.println("time = " + timeValue);
+				System.out.println("");
+				
+				NodeList dayNodeList = (NodeList) xpath.compile("//channel/item/weatherForecast/day").evaluate(doc, XPathConstants.NODESET);
+				NodeList forecastNodeList = (NodeList) xpath.compile("//channel/item/weatherForecast/forecast").evaluate(doc, XPathConstants.NODESET);
+				System.out.println("day records = " + dayNodeList.getLength());
+				System.out.println("forecast records = " + forecastNodeList.getLength());
+				
+				List<String> dayList = new ArrayList<String>();
+				List<String> forecastList = new ArrayList<String>();
+				if (dayNodeList != null && dayNodeList.getLength() > 0) {
+					for (int a = 0; a < dayNodeList.getLength(); a++) {
+						NodeList dayNodeSubList = dayNodeList.item(a).getChildNodes();
+						String day = dayNodeSubList.item(0).getNodeValue();
+						dayList.add(day);
+						
+					}
+				}
+				if (forecastNodeList != null && forecastNodeList.getLength() > 0) {
+					for (int b = 0; b < forecastNodeList.getLength(); b++) {
+						NodeList forecastNodeSubList = forecastNodeList.item(b).getChildNodes();
+						String forecast = forecastNodeSubList.item(0).getNodeValue();
+						forecastList.add(forecast);
+					}
+				}
+				
+				System.out.println("### day = " + dayList.get(0) + ", forecast = " + forecastList.get(0));
+				System.out.println("### day = " + dayList.get(1) + ", forecast = " + forecastList.get(1));
+				System.out.println("### day = " + dayList.get(2) + ", forecast = " + forecastList.get(2));
+				System.out.println("### day = " + dayList.get(3) + ", forecast = " + forecastList.get(3));
+				System.out.println("");
+				System.out.println("");
 			}
 			else if (input == 4) {
-
-			}
-			else if (input == 5) {
-
-			}
-			else if (input == 6) {
-
-			}
-			else if (input == 7) {
+				String dateValue = (String) xpath.compile("//uvindex/date").evaluate(doc, XPathConstants.STRING);
+				
+				System.out.println("UV Index");
+				System.out.println("----------------------------------------------------------");
+				System.out.println("date = " + dateValue);
+				System.out.println("");
+				
+				NodeList uvNodeList = (NodeList) xpath.compile("//uvindex/data/uv").evaluate(doc, XPathConstants.NODESET);
+				System.out.println("uvNodeList records = " + uvNodeList.getLength());
+				if (uvNodeList != null && uvNodeList.getLength() > 0) {
+					for (int a = 0; a < uvNodeList.getLength(); a++) {
+						 NodeList uvNodeSubList = uvNodeList.item(a).getChildNodes();
+						 String uv = uvNodeSubList.item(0).getNodeValue();
+						 
+						 NamedNodeMap nodeMap = uvNodeList.item(a).getAttributes();
+						 Node hr = nodeMap.getNamedItem("hr");
+						 
+						 System.out.println("### uv = " + uv + ", hr = " + hr.getNodeValue());
+					}
+					System.out.println("");
+					System.out.println("");
+				}
 				
 			}
-			else if (input == 8) {
-
+			else if (input == 5) {
+				String titleValue = (String) xpath.compile("//channel/item/title").evaluate(doc, XPathConstants.STRING);
+				String updateValue = (String) xpath.compile("//channel/item/update").evaluate(doc, XPathConstants.STRING);
+				String magnitudeValue = (String) xpath.compile("//channel/item/details/earthquake_details/magnitude").evaluate(doc, XPathConstants.STRING);
+				String coordinateOfEpicenterValue = (String) xpath.compile("//channel/item/details/earthquake_details/coordinate_of_epicenter").evaluate(doc, XPathConstants.STRING);
+				String estimatedDepthValue = (String) xpath.compile("//channel/item/details/earthquake_details/estimated_depth").evaluate(doc, XPathConstants.STRING);
+				String locationValue = (String) xpath.compile("//channel/item/details/earthquake_details/location").evaluate(doc, XPathConstants.STRING);
+				String detectedAtValue = (String) xpath.compile("//channel/item/details/earthquake_details/detected_at").evaluate(doc, XPathConstants.STRING);
+				String assessmentValue = (String) xpath.compile("//channel/item/details/earthquake_details/assessment").evaluate(doc, XPathConstants.STRING);
+				
+				System.out.println(titleValue);
+				System.out.println("----------------------------------------------------------");
+				System.out.println("### Update = " + updateValue);
+				System.out.println("### Magnitude = " + magnitudeValue);
+				System.out.println("### Coordinate Of Epicenter = " + coordinateOfEpicenterValue);
+				System.out.println("### Estimated Depth = " + estimatedDepthValue);
+				System.out.println("### Location = " + locationValue);
+				System.out.println("### Detected At = " + detectedAtValue);
+				System.out.println("### Assessment = " + assessmentValue);
+				System.out.println("");
+				System.out.println("");
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
