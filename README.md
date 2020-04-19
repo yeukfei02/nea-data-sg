@@ -2,8 +2,19 @@
 
 NEA data Singapore
 
-console application in java
+maven project, console application in java
+
+## Requirement:
+
+ - install java (1.8+)
 
 ## Testing and run:
+
+```
+// start project - run Main.java
+
+// run test case - run MainTest.java
+
+```
 
 open project in intellij idea
