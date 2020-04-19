@@ -14,7 +14,6 @@ maven project, console application in java
 // start project - run Main.java
 
 // run test case - run MainTest.java
-
 ```
 
 open project in intellij idea
