@@ -17,30 +17,29 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MainTest {
 	private final static String authorizationKey = "781CF461BB6606ADC49D8386041BBFD227CBEBC4F82A9D96";
-
 	private final static String urlLink = "http://api.nea.gov.sg/api/WebAPI/?dataset=2hr_nowcast&keyref=" + authorizationKey;
 	
 	@Test
 	public void test_001_getXmlStr() {
-		String xmlStr = getXmlStr(urlLink);
+		String xmlStr = getXmlStr();
 		System.out.println("xmlStr = " + xmlStr);
-		
+
 		assertTrue("xmlStr length is not greater than 0", xmlStr.length() > 0);
 	}
 	
 	
-	private static String getXmlStr(String urlLink) {
+	private static String getXmlStr() {
 		StringBuilder content = new StringBuilder();
 
 		try {
-			URL url = new URL(urlLink);
+			URL url = new URL(MainTest.urlLink);
 			URLConnection urlConnection = url.openConnection();
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
 			String line;
 
 			while ((line = bufferedReader.readLine()) != null) {
-				content.append(line + "\n");
+				content.append(line).append("\n");
 			}
 
 			bufferedReader.close();

@@ -1,4 +1,4 @@
-package com.donald.wu.main;
+package com.donaldwu.main;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -20,7 +20,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class Main extends AbstractMain {
-	
 	public static void main(String[] args) {
 		boolean exitStatus = false;
 
@@ -88,7 +87,6 @@ public class Main extends AbstractMain {
 		}
 	}
 
-
 	private static String getInputResultStr(int input) {
 		String inputResultStr = "";
 		switch(input) {
@@ -110,7 +108,6 @@ public class Main extends AbstractMain {
 		}
 
 		return inputResultStr;
-
 	}
 
 	private static String getXmlStr(String urlLink) {
@@ -124,7 +121,7 @@ public class Main extends AbstractMain {
 			String line;
 
 			while ((line = bufferedReader.readLine()) != null) {
-				content.append(line + "\n");
+				content.append(line).append("\n");
 			}
 
 			bufferedReader.close();
@@ -142,9 +139,9 @@ public class Main extends AbstractMain {
 	}
 
 	private static void showXmlStr(String urlLink, int input) {
-		String xmlString = getXmlStr(urlLink);
-		System.out.println("xmlString = " + xmlString);
-		
+//		String xmlString = getXmlStr(urlLink);
+//		System.out.println("xmlString = " + xmlString);
+
 		getXmlValue(urlLink, input);
 	}
 
@@ -173,7 +170,7 @@ public class Main extends AbstractMain {
 				
 				NodeList nodeList = (NodeList) xpath.compile("//channel/item/weatherForecast/area").evaluate(doc, XPathConstants.NODESET);
 				System.out.println("Total records = " + nodeList.getLength());
-				if (nodeList != null && nodeList.getLength() > 0) {
+				if (nodeList.getLength() > 0) {
 					for (int i = 0; i < nodeList.getLength(); i++) {
 						  NamedNodeMap nodeMap = nodeList.item(i).getAttributes();
 						  Node name = nodeMap.getNamedItem("name");
@@ -234,7 +231,7 @@ public class Main extends AbstractMain {
 				
 				List<String> dayList = new ArrayList<String>();
 				List<String> forecastList = new ArrayList<String>();
-				if (dayNodeList != null && dayNodeList.getLength() > 0) {
+				if (dayNodeList.getLength() > 0) {
 					for (int a = 0; a < dayNodeList.getLength(); a++) {
 						NodeList dayNodeSubList = dayNodeList.item(a).getChildNodes();
 						String day = dayNodeSubList.item(0).getNodeValue();
@@ -242,7 +239,7 @@ public class Main extends AbstractMain {
 						
 					}
 				}
-				if (forecastNodeList != null && forecastNodeList.getLength() > 0) {
+				if (forecastNodeList.getLength() > 0) {
 					for (int b = 0; b < forecastNodeList.getLength(); b++) {
 						NodeList forecastNodeSubList = forecastNodeList.item(b).getChildNodes();
 						String forecast = forecastNodeSubList.item(0).getNodeValue();
@@ -267,7 +264,7 @@ public class Main extends AbstractMain {
 				
 				NodeList uvNodeList = (NodeList) xpath.compile("//uvindex/data/uv").evaluate(doc, XPathConstants.NODESET);
 				System.out.println("uvNodeList records = " + uvNodeList.getLength());
-				if (uvNodeList != null && uvNodeList.getLength() > 0) {
+				if (uvNodeList.getLength() > 0) {
 					for (int a = 0; a < uvNodeList.getLength(); a++) {
 						 NodeList uvNodeSubList = uvNodeList.item(a).getChildNodes();
 						 String uv = uvNodeSubList.item(0).getNodeValue();
@@ -304,7 +301,6 @@ public class Main extends AbstractMain {
 				System.out.println("");
 				System.out.println("");
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

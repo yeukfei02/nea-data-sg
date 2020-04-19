@@ -1,7 +1,9 @@
 # nea-data-sg
+
 NEA data Singapore
 
-Console application in java
+console application in java
 
-### Testing and run:
-Open project in Eclipse
+## Testing and run:
+
+open project in intellij idea

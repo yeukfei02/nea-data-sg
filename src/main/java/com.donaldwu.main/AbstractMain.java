@@ -1,4 +1,4 @@
-package com.donald.wu.main;
+package com.donaldwu.main;
 
 public class AbstractMain {
 	protected final static String authorizationKey = "781CF461BB6606ADC49D8386041BBFD227CBEBC4F82A9D96";
