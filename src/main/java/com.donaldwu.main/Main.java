@@ -1,9 +1,9 @@
 package com.donaldwu.main;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
+//import java.io.BufferedReader;
+//import java.io.InputStreamReader;
+//import java.net.URL;
+//import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -33,7 +33,7 @@ public class Main extends AbstractMain {
 			System.out.println("3. " + fourDayOutlookStr);
 			System.out.println("4. " + ultravioletIndexStr);
 			System.out.println("5. " + earthquakeAdvisoryStr);
-			System.out.println("");
+			System.out.println();
 			System.out.println("0. Exit");
 			System.out.println("-------------------------------");
 
@@ -72,16 +72,16 @@ public class Main extends AbstractMain {
 
 				} else if (input == 0) {
 					System.out.println("Exit...");
-					System.out.println("");
+					System.out.println();
 					exitStatus = true;
 				} else {
 					System.out.println("No this options...");
-					System.out.println("");
+					System.out.println();
 
 				}
 			} catch (Exception e) {
 				System.out.println("Please enter a valid number again...");
-				System.out.println("");
+				System.out.println();
 			}
 
 		}
@@ -110,32 +110,32 @@ public class Main extends AbstractMain {
 		return inputResultStr;
 	}
 
-	private static String getXmlStr(String urlLink) {
-		StringBuilder content = new StringBuilder();
-
-		try {
-			URL url = new URL(urlLink);
-			URLConnection urlConnection = url.openConnection();
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-
-			String line;
-
-			while ((line = bufferedReader.readLine()) != null) {
-				content.append(line).append("\n");
-			}
-
-			bufferedReader.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return content.toString();
-	}
+//	private static String getXmlStr(String urlLink) {
+//		StringBuilder content = new StringBuilder();
+//
+//		try {
+//			URL url = new URL(urlLink);
+//			URLConnection urlConnection = url.openConnection();
+//			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+//
+//			String line;
+//
+//			while ((line = bufferedReader.readLine()) != null) {
+//				content.append(line).append("\n");
+//			}
+//
+//			bufferedReader.close();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//		return content.toString();
+//	}
 	
 	private static void showDescriptionStr(int input) {
 		String inputResultStr = getInputResultStr(input);
 		System.out.println("Opening [" + inputResultStr + "] now...");
-		System.out.println("");
+		System.out.println();
 	}
 
 	private static void showXmlStr(String urlLink, int input) {
@@ -151,7 +151,7 @@ public class Main extends AbstractMain {
 			DocumentBuilder db = dbf.newDocumentBuilder();
 			Document doc = db.parse(urlLink);
 			//System.out.println("root node name = " + doc.getDocumentElement().getNodeName());
-			System.out.println("");
+			System.out.println();
 			
 			XPathFactory xPathfactory = XPathFactory.newInstance();
 			XPath xpath = xPathfactory.newXPath();
@@ -166,7 +166,7 @@ public class Main extends AbstractMain {
 				System.out.println("date = " + dateValue);
 				System.out.println("time = " + timeValue);
 				System.out.println("validTime = " + validTimeValue);
-				System.out.println("");
+				System.out.println();
 				
 				NodeList nodeList = (NodeList) xpath.compile("//channel/item/weatherForecast/area").evaluate(doc, XPathConstants.NODESET);
 				System.out.println("Total records = " + nodeList.getLength());
@@ -178,8 +178,8 @@ public class Main extends AbstractMain {
 						  Node lon = nodeMap.getNamedItem("lon");
 						  System.out.println("### " + name.getNodeValue() + "     lat = " + lat.getNodeValue() + ", lon = " + lon.getNodeValue());
 					}
-					System.out.println("");
-					System.out.println("");
+					System.out.println();
+					System.out.println();
 				}
 			}
 			else if (input == 2) {
@@ -193,7 +193,7 @@ public class Main extends AbstractMain {
 				System.out.println("date = " + dateValue);
 				System.out.println("time = " + timeValue);
 				System.out.println("validTime = " + validTimeValue);
-				System.out.println("");
+				System.out.println();
 				
 				String highDegreesCelsius = (String) xpath.compile("//channel/main/temperature/@high").evaluate(doc, XPathConstants.STRING);
 				String lowDegreesCelsius = (String) xpath.compile("//channel/main/temperature/@low").evaluate(doc, XPathConstants.STRING);
@@ -210,8 +210,8 @@ public class Main extends AbstractMain {
 				
 				String forecast = (String) xpath.compile("//channel/main/forecast").evaluate(doc, XPathConstants.STRING);
 				System.out.println("### Forecast = " + forecast);
-				System.out.println("");
-				System.out.println("");
+				System.out.println();
+				System.out.println();
 			}
 			else if (input == 3) {
 				String titleValue = (String) xpath.compile("//channel/item/title").evaluate(doc, XPathConstants.STRING);
@@ -222,7 +222,7 @@ public class Main extends AbstractMain {
 				System.out.println("----------------------------------------------------------");
 				System.out.println("date = " + dateValue);
 				System.out.println("time = " + timeValue);
-				System.out.println("");
+				System.out.println();
 				
 				NodeList dayNodeList = (NodeList) xpath.compile("//channel/item/weatherForecast/day").evaluate(doc, XPathConstants.NODESET);
 				NodeList forecastNodeList = (NodeList) xpath.compile("//channel/item/weatherForecast/forecast").evaluate(doc, XPathConstants.NODESET);
@@ -251,8 +251,8 @@ public class Main extends AbstractMain {
 				System.out.println("### day = " + dayList.get(1) + ", forecast = " + forecastList.get(1));
 				System.out.println("### day = " + dayList.get(2) + ", forecast = " + forecastList.get(2));
 				System.out.println("### day = " + dayList.get(3) + ", forecast = " + forecastList.get(3));
-				System.out.println("");
-				System.out.println("");
+				System.out.println();
+				System.out.println();
 			}
 			else if (input == 4) {
 				String dateValue = (String) xpath.compile("//uvindex/date").evaluate(doc, XPathConstants.STRING);
@@ -260,7 +260,7 @@ public class Main extends AbstractMain {
 				System.out.println("UV Index");
 				System.out.println("----------------------------------------------------------");
 				System.out.println("date = " + dateValue);
-				System.out.println("");
+				System.out.println();
 				
 				NodeList uvNodeList = (NodeList) xpath.compile("//uvindex/data/uv").evaluate(doc, XPathConstants.NODESET);
 				System.out.println("uvNodeList records = " + uvNodeList.getLength());
@@ -274,8 +274,8 @@ public class Main extends AbstractMain {
 						 
 						 System.out.println("### uv = " + uv + ", hr = " + hr.getNodeValue());
 					}
-					System.out.println("");
-					System.out.println("");
+					System.out.println();
+					System.out.println();
 				}
 				
 			}
@@ -298,8 +298,8 @@ public class Main extends AbstractMain {
 				System.out.println("### Location = " + locationValue);
 				System.out.println("### Detected At = " + detectedAtValue);
 				System.out.println("### Assessment = " + assessmentValue);
-				System.out.println("");
-				System.out.println("");
+				System.out.println();
+				System.out.println();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
