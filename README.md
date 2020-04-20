@@ -17,3 +17,7 @@ maven project, console application in java
 ```
 
 open project in intellij idea
+
+## Contributing
+
+Please refer to [CONTRIBUTING.md](https://github.com/yeukfei02/nea-data-sg/blob/master/CONTRIBUTING.md)
