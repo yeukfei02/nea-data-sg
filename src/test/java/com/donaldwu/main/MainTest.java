@@ -1,4 +1,4 @@
-package com.donaldwu.test;
+package com.donaldwu.main;
 
 import static org.junit.Assert.assertTrue;
 
@@ -26,8 +26,7 @@ public class MainTest {
 
 		assertTrue("xmlStr length is not greater than 0", xmlStr.length() > 0);
 	}
-	
-	
+
 	private static String getXmlStr() {
 		StringBuilder content = new StringBuilder();
 
@@ -49,5 +48,4 @@ public class MainTest {
 
 		return content.toString();
 	}
-
 }
