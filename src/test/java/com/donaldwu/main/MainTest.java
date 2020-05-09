@@ -22,8 +22,6 @@ public class MainTest {
 	@Test
 	public void test_001_getXmlStr() {
 		String xmlStr = getXmlStr();
-		System.out.println("xmlStr = " + xmlStr);
-
 		assertTrue("xmlStr length is not greater than 0", xmlStr.length() > 0);
 	}
 
