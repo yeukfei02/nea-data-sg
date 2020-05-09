@@ -17,7 +17,6 @@ $ ./mvnw package
 // run jar
 $ java -jar /target/nea-data-sg-1.0.0.jar
 
-
 // start project - run Main.java
 
 // run test case - run MainTest.java
