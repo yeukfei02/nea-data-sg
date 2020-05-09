@@ -15,7 +15,7 @@ maven project, console application in java
 $ ./mvnw package
 
 // run jar
-$ java -jar /target/nea-data-sg-1.0.0.jar
+$ java -jar target/nea-data-sg-1.0.0.jar
 
 // start project - run Main.java
 
