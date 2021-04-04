@@ -4,13 +4,13 @@ NEA data Singapore
 
 maven project, console application in java
 
-## Requirement:
+## Requirement
 
- - install java (1.8+)
+- install java (1.8+)
 
-## Testing and run:
+## Testing and run
 
-```
+```zsh
 // build jar
 $ ./mvnw package
 
